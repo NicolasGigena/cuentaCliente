@@ -38,7 +38,9 @@ public class ServicioTransferencia {
 
         verificarMonto(monto, transferirDesde);
 
-        ejecutarTransaccion(monto, transferirDesde, transferirHacia);
+        
+        
+        ejecutarTransaccion(Double.parseDouble(monto), transferirDesde, transferirHacia);
 
     }
 
@@ -88,21 +90,20 @@ public class ServicioTransferencia {
 
     }
 
-    private void ejecutarTransaccion(String monto,Cliente transferirDesde,Cliente transferirHacia) {
+    private void ejecutarTransaccion(double monto,Cliente transferirDesde,Cliente transferirHacia) {
 
         for (Cliente cliente : repositorioClientes.getListaClientes()) {
 
             if (cliente.getDni() == transferirDesde.getDni()) {
-                cliente.descontar(Double.parseDouble(monto));
+                cliente.descontar(monto);
             }
 
             if (cliente.getDni() == transferirHacia.getDni()) {
-                cliente.sumar(Double.parseDouble(monto));
+                cliente.sumar(monto);
             }
 
         }
-
-        Transferencia transferencia = new Transferencia(Double.parseDouble(monto),transferirDesde,transferirHacia);
+        Transferencia transferencia = new Transferencia(monto,transferirDesde,transferirHacia);
 
         repositorioTransferencias.setListaTransferencias(transferencia);
 

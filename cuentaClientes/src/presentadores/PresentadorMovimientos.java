@@ -33,18 +33,20 @@ public class PresentadorMovimientos {
 
         vistaMovimientos.limpiarMovimientos();
 
-        Transferencia[] transferencias = new Transferencia[RepositorioTransferencias.getCantidadDeTranferencias()];
+        if (RepositorioTransferencias.tieneTranferecias(imprimirMovimientosDe.getDni())) {
+            Transferencia[] transferencias = new Transferencia[RepositorioTransferencias.getCantidadDeTranferencias()];
 
-        int contador = 0;
+            int contador = 0;
 
-        for (Transferencia transferencia : RepositorioTransferencias.optenerPorDni(imprimirMovimientosDe.getDni())) {
+            for (Transferencia transferencia : RepositorioTransferencias.optenerPorDni(imprimirMovimientosDe.getDni())) {
+                
+                transferencias[contador] = transferencia;
 
-            transferencias[contador] = transferencia;
-            
-            contador++;
+                contador++;
 
+            }
+            vistaMovimientos.imprimirTransferencias(transferencias);
         }
-        vistaMovimientos.imprimirTransferencias(transferencias);
 
         vistaMovimientos.imprimirSaldoCliente(String.valueOf(repositorioClientes.optenerPorDni(imprimirMovimientosDe.getDni()).getImporteCliente()));
 
@@ -63,14 +65,14 @@ public class PresentadorMovimientos {
     }
 
     public void inicializarClientes() {
-        
+
         Cliente[] clientes = new Cliente[repositorioClientes.cantidadDeClientes()];
         int contador = 0;
         for (Cliente cliente : repositorioClientes.getListaClientes()) {
             clientes[contador] = cliente;
             contador++;
         }
-        
+
         vistaMovimientos.cargarClientes(clientes);
     }
 

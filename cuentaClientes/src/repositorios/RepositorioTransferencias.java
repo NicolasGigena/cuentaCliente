@@ -16,10 +16,12 @@ public class RepositorioTransferencias {
     public void setListaTransferencias(Transferencia transferencia) {
         this.listaTransferencias.add(transferencia);
     }
+    
 
     public ArrayList<Transferencia> getListaTransferencias() {
         return this.listaTransferencias;
     }
+    
     public ArrayList<Transferencia> optenerPorDni(int dni) {
         
         ArrayList<Transferencia> arrayTransferencia = new ArrayList<>();
@@ -31,8 +33,19 @@ public class RepositorioTransferencias {
         }
         return arrayTransferencia;
     }
+    
     public int getCantidadDeTranferencias(){
         return listaTransferencias.size();
+    }
+    
+    public boolean tieneTranferecias(int dni){
+        
+        for (Transferencia listaTransferencia : listaTransferencias) {
+            if (dni == listaTransferencia.getDesde().getDni()) {
+                return true;
+            }
+        }
+    return false;
     }
       
 }

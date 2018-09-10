@@ -198,12 +198,12 @@ public class VistaMovimientos extends javax.swing.JFrame implements IvistaMoviem
 
     public void imprimirTransferencias(Transferencia[] tranferencias) {
         this.defaultTableModel = (DefaultTableModel) getMostararMovimientosjTable().getModel();
-
-        for (Transferencia tranferencia : tranferencias) {
             
-            this.defaultTableModel.addRow(new Object[]{tranferencia.getDesde(),tranferencia.getHacia(),tranferencia,tranferencia.getMonto()});
+            for (Transferencia tranferencia : tranferencias) {
+               
+                this.defaultTableModel.addRow(new Object[]{tranferencia.getDesde(), tranferencia.getHacia(), tranferencia,String.valueOf(tranferencia.getMonto())});
 
-        }
+            }
 
     }
 
@@ -213,7 +213,6 @@ public class VistaMovimientos extends javax.swing.JFrame implements IvistaMoviem
         }
     }
 
- 
     public void cargarClientes(Cliente[] clientes) {
         for (Cliente cliente : clientes) {
             getImprimirDejComboBox().addItem(cliente);
