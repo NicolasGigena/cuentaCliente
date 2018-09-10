@@ -200,8 +200,8 @@ public class VistaMovimientos extends javax.swing.JFrame implements IvistaMoviem
         this.defaultTableModel = (DefaultTableModel) getMostararMovimientosjTable().getModel();
             
             for (Transferencia tranferencia : tranferencias) {
-               
-                this.defaultTableModel.addRow(new Object[]{tranferencia.getDesde(), tranferencia.getHacia(), tranferencia,String.valueOf(tranferencia.getMonto())});
+                
+                this.defaultTableModel.addRow(new Object[]{tranferencia.getDesde(), tranferencia.getHacia(), tranferencia,tranferencia.getMonto()});
 
             }
 

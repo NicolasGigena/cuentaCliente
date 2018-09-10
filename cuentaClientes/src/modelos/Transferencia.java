@@ -33,6 +33,13 @@ public class Transferencia {
 
     public Cliente getHacia() {
         return Hacia;
-    }  
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(monto);
+    }
+    
+    
     
 }
